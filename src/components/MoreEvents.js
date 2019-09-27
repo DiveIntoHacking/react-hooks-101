@@ -1,26 +1,13 @@
-import axios from 'axios'
-import React, { useContext, useEffect } from 'react'
+import React, { useContext } from 'react'
 
+import useMoreEventsFetcher from './hooks/useMoreEventsFetcher'
 import MoreEvent from './MoreEvent'
 import AppContext from '../contexts/AppContext'
-
-const ROOT_URL = 'https://udemy-utils.herokuapp.com/api/v1'
-const QUERYSTRING = '?token=token123'
 
 const Events = () => {
   const { dispatch, state } = useContext(AppContext)
 
-  useEffect(() => {
-    console.log("Let's fetch data here.")
-
-    const getEvents = async () => {
-      const response = await axios.get(`${ROOT_URL}/events${QUERYSTRING}`)
-      const data = response.data
-      dispatch({ type: 'GET_EVENTS', data })
-    }
-
-    getEvents()
-  }, [dispatch])
+	useMoreEventsFetcher(dispatch)
 
   return (
     <>
