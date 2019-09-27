@@ -4,6 +4,7 @@ import 'bootstrap/dist/css/bootstrap.min.css'
 
 import EventForm from './EventForm'
 import Events from './Events'
+import MoreEvents from './MoreEvents'
 import OperationLogs from './OperationLogs'
 import AppContext from '../contexts/AppContext'
 import reducer from '../reducers'
@@ -14,6 +15,7 @@ const App = () => {
   const appState = localStorage.getItem(APP_KEY)
   const initialState = appState ? JSON.parse(appState) : {
     events: [],
+    moreEvents: [],
     operationLogs: []
   }
   const [state, dispatch] = useReducer(reducer, initialState)
@@ -28,6 +30,7 @@ const App = () => {
         <EventForm />
         <Events />
         <OperationLogs />
+        <MoreEvents />
       </div>
     </AppContext.Provider>
   )
