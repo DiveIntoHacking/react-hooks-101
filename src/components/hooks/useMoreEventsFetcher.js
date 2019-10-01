@@ -15,7 +15,7 @@ const useMoreEventsFetcher = dispatch => {
     }
 
     getEvents()
-  }, [dispatch])
+  })
 }
 
 export default useMoreEventsFetcher
