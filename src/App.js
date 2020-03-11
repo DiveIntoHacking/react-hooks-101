@@ -15,7 +15,7 @@ const App = () => {
 
   return (
     <>
-      <div>count: {count}</div>
+      <div id={Date.now()} >count: {count}</div>
       <div>
         <button onClick={increment}>+1</button>
         <button onClick={decrement}>-1</button>
