@@ -5,23 +5,24 @@ const App = props => {
   const { name, price } = state
 
   useEffect(() => {
-    console.log('This is like componentDidMount or componentDidUpdate.')
+    console.log('useEffect is invoked.')
   })
 
-  useEffect(() => {
-    console.log('This is like componentDidMount')
-  }, [])
+  const renderPeriod = () => {
+    console.log('renderPeriod renders period.')
+    return '。'
+  }
 
-  useEffect(() => {
-    console.log('This callback is for name only.')
-  }, [name])
+  const reset = () => {
+    if ((props.name !== name) || (props.price !== price)) setState(props)
+  }
 
   return (
     <>
-      <p>現在の{name}は、{price}円です。</p>
+      <p>現在の{name}は、{price}円です{renderPeriod()}</p>
       <button onClick={() => setState({...state, price: price + 1})}>+1</button>
       <button onClick={() => setState({...state, price: price - 1})}>-1</button>
-      <button onClick={() => setState(props)}>Reset</button>
+      <button onClick={reset}>Reset</button>
       <input value={name} onChange={e => setState({...state, name: e.target.value})}/>
     </>
   )
